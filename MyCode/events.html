@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+  </head>
+  <body>
+    <button id="ringButton">Ring Bell</button>
+    
+    <script>
+      function showMessage() {
+        console.log("Please open the door");
+      }
+
+      let button = document.getElementById("ringButton");
+      button.addEventListener("click", showMessage);
+    </script>
+  </body>
+</html>
