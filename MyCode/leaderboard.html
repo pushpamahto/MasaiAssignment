@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        .button {
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #scoreBox {
+            font-size: 24px;
+            width: 100px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button class="button" onclick="updateScore(1)">1</button>
+        <button class="button" onclick="updateScore(2)">2</button>
+        <button class="button" onclick="updateScore(3)">3</button>
+        <br>
+        <button class="button" onclick="updateScore(4)">4</button>
+        <button class="button" onclick="updateScore(5)">5</button>
+        <button class="button" onclick="updateScore(6)">6</button>
+        <br>
+        <button class="button" onclick="updateScore(7)">7</button>
+        <button class="button" onclick="updateScore(8)">8</button>
+        <button class="button" onclick="updateScore(9)">9</button>
+        <br>
+        <button class="button" onclick="updateScore(0)">0</button>
+        <button class="button" onclick="resetScore()">RESET</button>
+        <button class="button" onclick="enterScore()">ENTER</button>
+    </div>
+    <div>
+        <label>Score:</label>
+        <input type="text" id="scoreBox" readonly>
+    </div>
+    <div>
+        <label>MIN:</label>
+        <input type="text" id="minBox" readonly>
+    </div>
+    <div>
+        <label>MAX:</label>
+        <input type="text" id="maxBox" readonly>
+    </div>
+
+    <script>
+        let currentScore = '';
+        let minScore = Infinity;
+        let maxScore = -Infinity;
+
+        function updateScore(number) {
+            currentScore += number;
+            document.getElementById('scoreBox').value = currentScore;
+        }
+
+        function resetScore() {
+            currentScore = '';
+            document.getElementById('scoreBox').value = currentScore;
+        }
+
+        function enterScore() {
+            const score = parseInt(currentScore);
+
+            if (score < minScore) {
+                minScore = score;
+                document.getElementById('minBox').value = minScore;
+            }
+
+            if (score > maxScore) {
+                maxScore = score;
+                document.getElementById('maxBox').value = maxScore;
+            }
+
+            resetScore();
+        }
+    </script>
+</body>
+</html>
