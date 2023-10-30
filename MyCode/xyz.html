@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            font-size: 1.5em;
+            width: 200px;
+            text-align: center;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 5px;
+        }
+
+        div {
+            margin-top: 10px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <input id="score" type="text" readonly>
+    <br><br>
+    <button onclick="addToScore(1)">1</button>
+    <button onclick="addToScore(2)">2</button>
+    <button onclick="addToScore(3)">3</button>
+    <br><br>
+    <button onclick="addToScore(4)">4</button>
+    <button onclick="addToScore(5)">5</button>
+    <button onclick="addToScore(6)">6</button>
+    <br><br>
+    <button onclick="addToScore(7)">7</button>
+    <button onclick="addToScore(8)">8</button>
+    <button onclick="addToScore(9)">9</button>
+    <br><br>
+    <button onclick="addToScore(0)">0</button>
+    <br><br>
+    <button onclick="enterScore()">ENTER</button>
+    <br><br>
+    <div>
+        <label>MIN: </label>
+        <span id="min">0</span>
+    </div>
+
+    <div>
+        <label>MAX: </label>
+        <span id="max">1000</span>
+    </div>
+
+    <script>
+        let currentScore = '';
+
+        function addToScore(num) {
+            currentScore += num;
+            document.getElementById('score').value = currentScore;
+        }
+
+        function enterScore() {
+            let score = parseInt(currentScore);
+
+            let min = parseInt(document.getElementById('min').textContent);
+            let max = parseInt(document.getElementById('max').textContent);
+
+            if (score < min) {
+                document.getElementById('min').textContent = score;
+            }
+
+            if (score > max) {
+                document.getElementById('max').textContent = score;
+            }
+
+            currentScore = '';
+            document.getElementById('score').value = '';
+        }
+    </script>
+</body>
+</html>
