@@ -3,81 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
+    <title>Document</title>
+
     <style>
-        .button {
-            font-size: 20px;
-            margin: 5px;
-            cursor: pointer;
+        .minmax{
+            width: 20%;
+            display:flex;
+            justify-content: space-between;
+            margin: auto;
+            margin-top: 5%;
         }
-        #scoreBox {
-            font-size: 24px;
-            width: 100px;
-            margin: 10px 0;
+
+        #min{
+            border: 1px solid black;
+            background-color: red;
+            color: black;
+            height: 40px;
+            width: 80px;
+            text-align: center;
+            padding-top: 5%;
+            
+
+        }
+        #max{
+            border: 1px solid black;
+            background-color: greenyellow;
+            color: black;
+            height: 40px;
+            width: 80px;
+            text-align: center;
+            padding-top: 5%;
+
+        }
+        #score{
+            border:1px solid black;
+            background-color: rgb(208, 203, 203);
+            color: black;
+            height:40px;
+            width:120px;
+            margin: auto;
+            text-align: center;
+            padding-top: 1%;
+
+        }
+        #text{
+            color: black;
+            text-align: center;
+            margin-top: 2%;
+        }
+
+        .btns{
+            display:grid;
+            grid-template-columns: repeat(3,2fr);
+            width:15%;
+            height: 200px;
+            margin: auto;
+            margin-top: 2%;
+            
+
+        }
+        .btns > button{
+            margin-bottom:20% ;
+            margin-right: 20%;
+            background-color: orangered;
+
+            
+            
+        }
+
+        .btns >button:nth-child(1){
+            background-color: green;
+            color: black;
+        }
+
+        .btns >button:nth-child(3){
+            background-color: green;
+            color: black;
+        }
+
+        .btns >button:nth-child(7){
+            background-color: green;
+            color: black;
+        }
+
+        .btns >button:nth-child(9){
+            background-color: green;
+            color: black;
+        }
+
+        .btns >button:nth-child(10){
+            background-color: purple;
+            color: white;
+        }
+
+        .btns >button:nth-child(11){
+            border:1px solid black;
+            background-color: rgb(16, 16, 16);
+            color: rgb(236, 233, 233);
+            height: 40px;
+            width:80px;
+            margin: auto;
+            text-align: center;
+        
         }
     </style>
 </head>
 <body>
-    <div>
-        <button class="button" onclick="updateScore(1)">1</button>
-        <button class="button" onclick="updateScore(2)">2</button>
-        <button class="button" onclick="updateScore(3)">3</button>
-        <br>
-        <button class="button" onclick="updateScore(4)">4</button>
-        <button class="button" onclick="updateScore(5)">5</button>
-        <button class="button" onclick="updateScore(6)">6</button>
-        <br>
-        <button class="button" onclick="updateScore(7)">7</button>
-        <button class="button" onclick="updateScore(8)">8</button>
-        <button class="button" onclick="updateScore(9)">9</button>
-        <br>
-        <button class="button" onclick="updateScore(0)">0</button>
-        <button class="button" onclick="resetScore()">RESET</button>
-        <button class="button" onclick="enterScore()">ENTER</button>
-    </div>
-    <div>
-        <label>Score:</label>
-        <input type="text" id="scoreBox" readonly>
-    </div>
-    <div>
-        <label>MIN:</label>
-        <input type="text" id="minBox" readonly>
-    </div>
-    <div>
-        <label>MAX:</label>
-        <input type="text" id="maxBox" readonly>
+    
+    <div class="minmax">
+        <div id="min">43</div>
+        <div id="max">2019</div>
+
     </div>
 
-    <script>
-        let currentScore = '';
-        let minScore = Infinity;
-        let maxScore = -Infinity;
+    <h2 id="text">SCORE</h2>
+        <div id="score">#</div>
+    
 
-        function updateScore(number) {
-            currentScore += number;
-            document.getElementById('scoreBox').value = currentScore;
-        }
+    <div class="btns">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+        
+        <button onclick="calculate()">ENTER</button>
+        
+    </div>
 
-        function resetScore() {
-            currentScore = '';
-            document.getElementById('scoreBox').value = currentScore;
-        }
-
-        function enterScore() {
-            const score = parseInt(currentScore);
-
-            if (score < minScore) {
-                minScore = score;
-                document.getElementById('minBox').value = minScore;
-            }
-
-            if (score > maxScore) {
-                maxScore = score;
-                document.getElementById('maxBox').value = maxScore;
-            }
-
-            resetScore();
-        }
-    </script>
+    
 </body>
+
+<script>
+
+    let butn = document.querySelectorAll(".btns > button")
+
+   
+    let bag = "";
+    butn.forEach((btns,index) =>{
+
+        if(index < butn.length -1){
+
+            btns.addEventListener("click" , function(){
+
+
+        let displayScore = document.getElementById("score")
+
+            bag += btns.textContent;
+            displayScore.textContent = bag;
+
+    })
+       
+}
+
+   })
+
+    function calculate(){
+        let minimum = document.getElementById("min");
+        let maximum = document.getElementById("max");
+
+        console.log(min.textContent,max.textContent)
+
+        if(Number(bag) < Number(min.textContent)){
+            min.textContent = bag;
+        }else if(Number(bag > Number(max.textContent))){
+            max.textContent = bag;
+        }
+
+    }
+</script>
 </html>
